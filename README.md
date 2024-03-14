@@ -2,7 +2,12 @@
 
 - **Factory Method** - when you have classes with a `CommonInterfaceForClassesToCreate` AND you need for program to decide whether to create `ClassToCreate` or `ClassToCreate2` at runtime (this means that you will use `if`-statements for deciding which one to create)
 
-- **Abstract Factory** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime.
+- **Abstract Factory** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Groups of classes. If you want to add Class3, Class4 - it will be a horrible one!
+  ```
+  Group1    Group2
+  Class1    Class1
+  Class2    Class2
+  ```
 
 - **Builder** - when there is some `Class_With_A_Lot_Of_Variables` - to handle this, you can create a `Builder_Class` that have different funcitons to set all of variables. In a modern Java world lombok will do it for you.
 
