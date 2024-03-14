@@ -1,12 +1,9 @@
-package com.example;
+package com.example.behavioural.abstract_factory;
 
-import com.example.behavioural.abstract_factory.Class1Interface;
-import com.example.behavioural.abstract_factory.Class2Interface;
-import com.example.behavioural.abstract_factory.FactoryInterface;
 import com.example.behavioural.abstract_factory.group1.FactoryForGroup1;
 import com.example.behavioural.abstract_factory.group2.FactoryForGroup2;
 
-public class AbstractFactory {
+public class Main {
     public static void main(String[] args) {
         FactoryInterface factoryForEitherGroup;
         // Choosing Factory in a RunTime
