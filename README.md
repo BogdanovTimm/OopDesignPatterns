@@ -5,6 +5,7 @@
 - **Abstract Factory** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Groups of classes. If you want to add Class3, Class4 - it will be a horrible one!
   ```
   Group1    Group2
+  ------    ------
   Class1    Class1
   Class2    Class2
   ```
