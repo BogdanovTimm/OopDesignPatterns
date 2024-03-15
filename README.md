@@ -6,24 +6,24 @@
 
 - Factory Method - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Class3, Class4. If you want to add new Groups of Classes - it will be a horrible one! If you want to add new Groups of Classes - you need to choose Abstract Factory Pattern
     ```Rust
-    Classes today          Classes tomorrow
+         Today                     Tomorrow
 
-    Group1    Group2       Group1    Group2
-    ------    ------  ===> ------    ------
-    Class1    Class1  ===> Class1    Class1
-    Class2    Class2       Class2    Class2
-                           Class3    Class3
-                           Class4    Class4
+    Group1    Group2           Group1    Group2
+    ------    ------           ------    ------
+    Class1    Class1           Class1    Class1
+    Class2    Class2           Class2    Class2
+                               Class3    Class3
+                               Class4    Class4
     ```
 
 - Abstract Factory - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Groups of classes. If you want to add Class3, Class4 - it will be a horrible one! If you want to add Class3, Class4 - you need to choose Factory Method Pattern
     ```Rust
-    Classes today          Classes tomorrow
+          Today                          Tomorrow
     
-    Group1    Group2       Group1    Group2    Group3    Group4
-    ------    ------  ===> ------    ------    ------    ------
-    Class1    Class1  ===> Class1    Class1    Class1    Class1
-    Class2    Class2       Class2    Class2    Class2    Class2
+    Group1    Group2           Group1    Group2    Group3    Group4
+    ------    ------           ------    ------    ------    ------
+    Class1    Class1           Class1    Class1    Class1    Class1
+    Class2    Class2           Class2    Class2    Class2    Class2
     ```
 
 - Builder - when there is some `Class_With_A_Lot_Of_Variables` - to handle this, you can create a `Builder_Class` that have different funcitons to set all of variables. In a modern Java world lombok will do it for you.
@@ -43,29 +43,41 @@
     - when you have 2 or more classes that need to implement some common interface, but they are not AND they cannot be changed
     - when you have 2 or more very annoing classes (because to do a simple thing they call a lot of methods or because author of these classes often changes them and these changes break your code)
     ```Rust
-    Old code                              Fixed code
+                 Before                              After
 
-    AnnoingClassThatCannotBeChanged1 ===> LovelyInterface--->LovelyClass1---->AnnoingClassThatCannotBeChanged1
-    AnnoingClassThatCannotBeChanged2 ===>                `-->LovelyClass2---->AnnoingClassThatCannotBeChanged2
+    AnnoingClassThatCannotBeChanged1              LovelyInterface===>LovelyClass1====>AnnoingClassThatCannotBeChanged1
+    AnnoingClassThatCannotBeChanged2                            "===>LovelyClass2====>AnnoingClassThatCannotBeChanged2
     ```
 
 - Proxy - has 2 main reasons to use:
     - when you have a class that cannot be changed, but you don't want for somebody to directly call methods or get/set fields of original class (for example, when you add caching)
     - when you have a class that cannot be changed, but you need to add something new at the compile time (e.g. that wlill not be changed while program is running) to it
     ```Rust
-    Old Code                                Fixed code
+       Before                             After
 
-    OldClass ===> InterfaceForOldClass---->ProxyWithNewFeatures- - [calls].
-             ===>                     `--->OldClass< - - - - - - - - - - -'
+    OldClass                InterfaceForOldClass====>ProxyWithNewFeatures- - [calls].
+                                               "====>OldClass< - - - - - - - - - - -'
     ```
 
 - Decorator - when you want to control flow of some method at the runtime.
 
-- Bridge - If there are some classes that have a lot in common, and you can see that the pattern of their common and unique variables are clear (for example, you have 4 classes: `Blue_Box_Class`, `Red_Box_Class`, `Blue_Sphere_Class` and `Red_Sphere_Class`) - you can create an `Interface` to reduce the number of classes (now, you have `Box_Class` that implements `Color_Interface` and `Sphere_Class` that implements `Color_Interface`).
+- Bridge - If there are 2 groups of classes, and both `Group1Class1` and `Group1Class2` may call either `Group2Class1` or `Group2Class2`
+    ```Rust
+                 Before                                             After
 
-- Composite - Sometimes you have a lot of `Some_Class` instances that should run some `important_function ()` either together, by groups or one by one. You can create `ArrayList_Of_ArrayLists_And_Some_Class_Instances` that will contains of single `Some_Class` instances and other `ArrayList_Of_ArrayLists_And_Some_Class_Instances`.
+    Group1Class1 -[calls]- >Group2Class1<-.            Group1Class1-[calls]-                                         Group2Class1
+                `-[calls]- >Group2Class2  :                                  \                                        ||
+                                 ^        :                                   AbstractGroup1-[calls]->AbstractGroup2==++
+                                 :        :                                  /                                        ||
+    Group1Class2- [calls]- - - - '        :            Group1Class2-[calls]-                                         Group2Class2
+                `-[calls]- - - - - - - - -'
+    ```
 
-- Facade - When your `Class_With_A_Lot_Of_Methods` is too big, and the method chain is too long - you can create a `Facade_Class` that will run chains of methods with single function.
+- Composite has 2 main purposes:
+    - For working with Tree Data Structures 
+    - Sometimes you have a lot of `Some_Class` instances that should run some `important_function ()` either together, by groups or one by one. You can create `ArrayList_Of_ArrayLists_And_Some_Class_Instances` that will contains of single `Some_Class` instances and other `ArrayList_Of_ArrayLists_And_Some_Class_Instances`.
+
+- Facade - Adapter, but for a lot of classes
 
 - Flyweight - Sometimes there is a `Big_Class` that have a lot of variables that is common between its instances. You can create a `Class_For_Common_Variables` that will keep them.
 
