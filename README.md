@@ -34,13 +34,13 @@
 
 # Structural
 
-- **Adapter** - it has 2 main reasons to use:
+- **Adapter** - it has 3 main reasons to use:
     - when you have 2 or more `ClassThatCannotBeChanged` that you can't change (because they are final or because they are already too big), but you want to change them
     - when you have 2 or more classes that need to implement some common interface, but they are not AND they cannot be changed
     - when you have 2 or more very annoing classes (because to do a simple thing they call a lot of methods or because author of these classes often changes them and these changes break your code)
     ```Rust
     AnnoingClassThatCannotBeChanged1 ===> LovelyInterface--->LovelyClass1---->AnnoingClassThatCannotBeChanged1
-    AnnoingClassThatCannotBeChanged2                     `-->LovelyClass2---->AnnoingClassThatCannotBeChanged2
+    AnnoingClassThatCannotBeChanged2 ===>                `-->LovelyClass2---->AnnoingClassThatCannotBeChanged2
     ```
 
 - **Proxy** - when you have same problems that with Adapter pattern, but also you don't want for somebody to directly call methods or get/set fields ot original classes (for example, when you add caching)
