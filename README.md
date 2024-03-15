@@ -31,7 +31,7 @@
 # Structural
 
 - **Adapter** - it has 2 main reasons to use:
-  - when you have some `ClassThatCannotBeChanged` that you can't change (because it is final or bacause it is already too big), but you want to change it somehow.
+  - when you have some `ClassThatCannotBeChanged` that you can't change (because it is final or because it is already too big), but you want to change it somehow.
   - when you have some classes that need to implement some common interface, but they are not AND they cannot be changed
 
 - **Proxy** - when you have same problems that with Adapter pattern, but also you don't want for somebody to directly call methods or get/set fields ot original classes (for example, when you add caching)
