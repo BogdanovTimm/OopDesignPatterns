@@ -1,7 +1,11 @@
+# Important notes
+
+- When you create an Interface, you create a point in code where will all changes occure. It is very important, because if some code needs to be changed, you need to work only with some class that will be changed and with its Interface, instead of changing every class that uses it
+
 # Creational
 
 - **Factory Method** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Class3, Class4. If you want to add new Groups of Classes - it will be a horrible one! If you want to add new Groups of Classes - you need to choose **Abstract Factory** Pattern
-    ```
+    ```Rust
     Group1    Group2       Group1    Group2
     ------    ------  ===> ------    ------
     Class1    Class1  ===> Class1    Class1
@@ -11,7 +15,7 @@
     ```
 
 - **Abstract Factory** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Groups of classes. If you want to add Class3, Class4 - it will be a horrible one! If you want to add Class3, Class4 - you need to choose **Factory Method** Pattern
-    ```
+    ```Rust
     Group1    Group2       Group1    Group2    Group3    Group4
     ------    ------  ===> ------    ------    ------    ------
     Class1    Class1  ===> Class1    Class1    Class1    Class1
@@ -31,8 +35,13 @@
 # Structural
 
 - **Adapter** - it has 2 main reasons to use:
-  - when you have some `ClassThatCannotBeChanged` that you can't change (because it is final or because it is already too big), but you want to change it somehow.
-  - when you have some classes that need to implement some common interface, but they are not AND they cannot be changed
+    - when you have 2 or more `ClassThatCannotBeChanged` that you can't change (because they are final or because they are already too big), but you want to change them
+    - when you have 2 or more classes that need to implement some common interface, but they are not AND they cannot be changed
+    - when you have 2 or more very annoing classes (because to do a simple thing they call a lot of methods or because author of these classes often changes them and these changes break your code)
+    ```Rust
+    AnnoingClassThatCannotBeChanged1 ===> LovelyInterface--->LovelyClass1---->AnnoingClassThatCannotBeChanged1
+    AnnoingClassThatCannotBeChanged2                     `-->LovelyClass2---->AnnoingClassThatCannotBeChanged2
+    ```
 
 - **Proxy** - when you have same problems that with Adapter pattern, but also you don't want for somebody to directly call methods or get/set fields ot original classes (for example, when you add caching)
 
