@@ -6,6 +6,8 @@
 
 - **Factory Method** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Class3, Class4. If you want to add new Groups of Classes - it will be a horrible one! If you want to add new Groups of Classes - you need to choose **Abstract Factory** Pattern
     ```Rust
+    Classes today          Classes tomorrow
+
     Group1    Group2       Group1    Group2
     ------    ------  ===> ------    ------
     Class1    Class1  ===> Class1    Class1
@@ -16,6 +18,8 @@
 
 - **Abstract Factory** - when you have 2 or more groups of classes that are same in what they do, but different in their realisations (button for a mac, button for a linux, text field fot a mac, text field for a linux) and you need to decide which group of them to use at the runtime. And the most important thing: you have 2 ways when the changes: either you will create new Groups of Classes or new Class3, Class4, etc. This pattern is a good one when you want to add new Groups of classes. If you want to add Class3, Class4 - it will be a horrible one! If you want to add Class3, Class4 - you need to choose **Factory Method** Pattern
     ```Rust
+    Classes today          Classes tomorrow
+    
     Group1    Group2       Group1    Group2    Group3    Group4
     ------    ------  ===> ------    ------    ------    ------
     Class1    Class1  ===> Class1    Class1    Class1    Class1
@@ -39,11 +43,21 @@
     - when you have 2 or more classes that need to implement some common interface, but they are not AND they cannot be changed
     - when you have 2 or more very annoing classes (because to do a simple thing they call a lot of methods or because author of these classes often changes them and these changes break your code)
     ```Rust
+    Old code                              Fixed code
+
     AnnoingClassThatCannotBeChanged1 ===> LovelyInterface--->LovelyClass1---->AnnoingClassThatCannotBeChanged1
     AnnoingClassThatCannotBeChanged2 ===>                `-->LovelyClass2---->AnnoingClassThatCannotBeChanged2
     ```
 
-- **Proxy** - when you have same problems that with Adapter pattern, but also you don't want for somebody to directly call methods or get/set fields ot original classes (for example, when you add caching)
+- **Proxy** - has 2 main reasons to use:
+    - when you have a class that cannot be changed, but you don't want for somebody to directly call methods or get/set fields of original class (for example, when you add caching)
+    - when you have a class that cannot be changed, but you need to add something new at the compile time (e.g. that wlill not be changed while program is running) to it
+    ```Rust
+    Old Code                                Fixed code
+
+    OldClass ===> InterfaceForOldClass---->ProxyWithNewFeatures- - [calls].
+             ===>                     `--->OldClass< - - - - - - - - - - -'
+    ```
 
 - **Decorator** - when you want to control flow of some method at the runtime.
 
