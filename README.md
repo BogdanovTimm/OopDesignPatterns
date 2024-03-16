@@ -87,22 +87,28 @@
 
 # Behavioral
 
-- Chain Of responsibility - Sometimes you have some method that uses a lot of if-then-else or switch checkers. You can divide that method by creating an `Abstract_Checker_Class` and `Cheacker_Class`es that will handle this long check one by one.
+- Chain Of responsibility - 2 main purposes:
+    - Method that uses a lot of if-then-else or switch checkers. You can divide that method by creating an `Abstract_Checker_Class` and `Cheacker_Class`es that will handle this long check one by one
+    - You need to create if-the-else check that may change in a RunTime
 
 - Command - Sometimes you need to queue methods, or handle undo/redo for methods, or you want to different classes to perform same operations (for example a clicking on a button and pressing a key on a keyboard should run same method) - then you can create a `Function_Handler_Class` that will wrap some method and then you need to create an `Invoker` class that will run a method based on given `Funciton_Handler_Class`.
 
-- Iterator - Simply creating a custon `Iterator_Class` for some Colleciton.
+- Iterator - Simply creating a custon `Iterator_Class` for some Colleciton. What is good about it: to work with some big Collection, you don't need to create a copy of it (and it makes possible to work with the very large Collections. Without Iterator you can't do it)
+
+- Interpreter - Or it is used when you need to create a system where a user may customize what a program do.
 
 - Mediator - Sometimes you need to create some `Class1`, each instance of which has a `desired_function ()` in itself, and each instance of which can run `desired_function ()` within other functions. To handle this, you can create an `ArrayList_Of_Class1_Instances` that will keep track of added `Class1` instances and that will allow each instance of `Class1` to run `desired_funciton ()` in other `Class1` instances.
 
 - Memento - Sometimes you want to safe the state of the instance of `Some_Class` - to handle this, you can create a `Snapshot_Class` that will save the snapshot of `Soeme_Class`'s variables.
 
-- Observer - Sometime you have a `Class1` which has some variable, and each time when this variable was changed, somebody need to be notifyed about it. To handle this, you can create an `Observer_Class` and use `notify_all_observers ()` method, to notify them all.
+- Observer - When you need one set of classes, that changes at a Runtime, to notify another set of classes, that also changes at the Runtime. 
 
 - State - Sometimes you need to create a finite-state machine (for example, a traffic light) - to handle this, you can create a `Contex_Class` that has a variable for `Concrete_State`s. It is similar to the Strategy Design Pattern, but in the State Design Pattern, the `State_Class`es know about each other and `Context_Class` sometimes can't switch from one state to another.
 
 - Strategy - Sometimes you need a function that can perform different actions. To handle this, you can create a `Functional_Interface1`. Then you need to create some `Functional_Class`es that will implement `Funcitonal_Interface1`. And then you need to create a `Function1_Executor_Class` that will change `function1 ()` based on given `Functional_Class`.
 
-- Template Method - Sometimes you have a `long_method_that_runs_other_methods ()` that consists of methods need to be unchanged and methods that can be overriden by osme classes. You can create an `Abstract_Parent_Datatype` which `Children_Class`es could use this long method. Also they could override the methods that allowed to be overwriten. Sequence of methods that `lond_method_that_runs_other_methods ()` runs will stay the same.
+- Template Method - when you have 2 or more classes that have a lot of a common in their methods.
 
-- Visitor - Sometimes you have a lot of `Some_Class`es and you want to treat them differently with 1 object. To handle this, you need to create a new `Interface_For_Dealing_With_Visitor` and all classes that implement it, can deals with an `Visitor_Class` that will treat them differently.
+- Visitor:
+    - You will often change similar methods for some group of classes, but adding or removing methods is not easy.
+    - Sometimes you have a lot of `Some_Class`es and you want to treat them differently with 1 object. To handle this, you need to create a new `Interface_For_Dealing_With_Visitor` and all classes that implement it, can deals with an `Visitor_Class` that will treat them differently.
