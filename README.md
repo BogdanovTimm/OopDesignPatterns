@@ -56,7 +56,7 @@
        Before                             After
 
     OldClass                InterfaceForOldClass====>ProxyWithNewFeatures- - [calls].
-                                               "====>OldClass< - - - - - - - - - - -'
+                                             "====>OldClass< - - - - - - - - - - -'
     ```
 
 - Decorator - when you want to control flow of some method at the runtime.
