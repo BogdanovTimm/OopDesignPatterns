@@ -95,13 +95,13 @@
 
 - Iterator - Simply creating a custon `Iterator_Class` for some Colleciton. What is good about it: to work with some big Collection, you don't need to create a copy of it (and it makes possible to work with the very large Collections. Without Iterator you can't do it)
 
-- Interpreter - Or it is used when you need to create a system where a user may customize what a program do.
+- Interpreter - it is used when you need to create a system where a user may customize what a program do.
 
 - Mediator - Sometimes you need to create some `Class1`, each instance of which has a `desired_function ()` in itself, and each instance of which can run `desired_function ()` within other functions. To handle this, you can create an `ArrayList_Of_Class1_Instances` that will keep track of added `Class1` instances and that will allow each instance of `Class1` to run `desired_funciton ()` in other `Class1` instances.
 
 - Memento - Sometimes you want to safe the state of the instance of `Some_Class` - to handle this, you can create a `Snapshot_Class` that will save the snapshot of `Soeme_Class`'s variables.
 
-- Observer - When you need one set of classes, that changes at a Runtime, to notify another set of classes, that also changes at the Runtime. 
+- Observer - When you need one group of instances of some classes (and that set of instances of some classes often changes at a Runtime: new ones is created and other deleted), to notify another set of classes, that also changes at the Runtime.
 
 - State - Sometimes you need to create a finite-state machine (for example, a traffic light) - to handle this, you can create a `Contex_Class` that has a variable for `Concrete_State`s. It is similar to the Strategy Design Pattern, but in the State Design Pattern, the `State_Class`es know about each other and `Context_Class` sometimes can't switch from one state to another.
 
